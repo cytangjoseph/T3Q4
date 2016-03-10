@@ -39,12 +39,13 @@ public class T3Q4 {
 
     public static void main(String[] args)throws IOException{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String pathname;
+        String inputText;
         
         System.out.println("Enter filename: ");
-        pathname = reader.readLine();
-        File file = new File(pathname);
-        System.out.println("File: " + pathname);
+        inputText = reader.readLine();
+
+        File file = new File(inputText);
+        System.out.println("File: " + file);
         System.out.println("MD5: " + toHex(HashFunction.MD5.checksum(file)));
         System.out.println("SHA1: " + toHex(HashFunction.SHA1.checksum(file)));
         System.out.println("SHA256: " + toHex(HashFunction.SHA256.checksum(file)));
