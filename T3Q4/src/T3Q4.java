@@ -36,7 +36,11 @@ public class T3Q4 {
             }
         }//checksum()
     }//HashFunction()
-
+    
+    private static String toHex(byte[]  bytes) {
+        return DatatypeConverter.printHexBinary(bytes);
+    }
+    
     public static void main(String[] args)throws IOException{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String inputText;
@@ -45,13 +49,17 @@ public class T3Q4 {
         inputText = reader.readLine();
 
         File file = new File(inputText);
-        System.out.println("File: " + file);
-        System.out.println("MD5: " + toHex(HashFunction.MD5.checksum(file)));
-        System.out.println("SHA1: " + toHex(HashFunction.SHA1.checksum(file)));
-        System.out.println("SHA256: " + toHex(HashFunction.SHA256.checksum(file)));
+        boolean bool = file.exists();
+        if (bool == true){
+            System.out.println("File: " + file);
+            System.out.println("MD5: " + toHex(HashFunction.MD5.checksum(file)));
+            System.out.println("SHA1: " + toHex(HashFunction.SHA1.checksum(file)));
+            System.out.println("SHA256: " + toHex(HashFunction.SHA256.checksum(file)));
+        }
+        else {
+            System.out.println("File: " + file + " does not exist!!" );
+        }
     }
     
-    private static String toHex(byte[]  bytes) {
-        return DatatypeConverter.printHexBinary(bytes);
-    }
+    
 }
